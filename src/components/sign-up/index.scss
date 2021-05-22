@@ -1,0 +1,17 @@
+.sign-up {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  
+  .error-message {
+    display: block;
+    color: red;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+  }
+
+  .title {
+    margin: 10px 0;
+  }
+}

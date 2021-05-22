@@ -1,0 +1,22 @@
+.sign-in {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    margin: 10px 0;
+  }
+
+  .error-message {
+    display: block;
+    color: red;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
