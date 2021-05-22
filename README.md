@@ -1,5 +1,5 @@
-## Clothing Platform - An Online Shopping Platform [React]
-Clothing Platform is an online shopping platform prototype
+## Dress Up - An Online Shopping Platform [React]
+Dress Up is an online shopping platform (apparel) prototype
 
 ## Key Libraries and Frameworks
 - Redux
