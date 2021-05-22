@@ -4,9 +4,7 @@ import './index.scss';
 
 import CollectionItem from 'components/collection-item';
 
-const CollectionPreview = (props) => {
-  const { title, routeName, items } = props;
-
+const CollectionPreview = ({ title, items }) => {
   return (
     <div className="collection-preview">
       <p className="title">{ title }</p>

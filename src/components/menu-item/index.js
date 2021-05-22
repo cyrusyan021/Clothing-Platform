@@ -2,9 +2,7 @@ import React from 'react';
 
 import './index.scss';
 
-const MenuItem = (props) => {
-  const { title, imageUrl, size } = props;
-  
+const MenuItem = ({ title, imageUrl, size }) => {
   return  (
     <div className={ `menu-item ${ size }` }>
       <div

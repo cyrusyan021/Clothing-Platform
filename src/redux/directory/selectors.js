@@ -10,7 +10,7 @@ export const useDirectorySectionsSelector = () => {
       directorySelector,
       (directory) => directory.sections,
     )
-  ),[]);
+  ), []);
 
   return useSelector(selector);
 }

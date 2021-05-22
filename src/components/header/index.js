@@ -8,14 +8,16 @@ import './index.scss';
 import CartDropdown from 'components/cart-dropdown';
 import CartIcon from 'components/cart-icon';
 
-import { cartHiddenSelector } from 'redux/cart/selectors';
+import { useCartHiddenSelector } from 'redux/cart/selectors';
 import { currentUserSelector } from 'redux/user/selectors';
 
 import { auth } from 'firebase/firebase.utils';
 
 import { LogoIcon } from 'assets/icons';
 
-const Header = ({ currentUser, hidden }) => {
+const Header = ({ currentUser }) => {
+  const cartHidden = useCartHiddenSelector();
+
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -44,14 +46,13 @@ const Header = ({ currentUser, hidden }) => {
           <CartIcon />
         </div>
       </div>
-      { hidden ? null : <CartDropdown /> }
+      { cartHidden ? null : <CartDropdown /> }
     </div>
   )
 }
 
 const mapStateToProps = createStructuredSelector({
   currentUser: currentUserSelector,
-  hidden: cartHiddenSelector,
 })
 
 export default connect(mapStateToProps)(Header);

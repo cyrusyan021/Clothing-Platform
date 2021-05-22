@@ -1,35 +1,50 @@
+import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
+// base selectors
 const cartSelector = (state) => state.cart;
+const cartItemsSelector = createSelector(cartSelector, (cart) => cart.cartItems);
 
 // toogling cart hidden
-export const cartHiddenSelector = createSelector(
-  cartSelector,
-  (cart) => cart.hidden
-);
+export const useCartHiddenSelector = () => {
+  const selector = useMemo(() => (
+    createSelector(
+      cartSelector,
+      (cart) => cart.hidden
+    )
+  ), []);
+
+  return useSelector(selector);
+}
 
 // cart items
-export const cartItemSelector = createSelector(
-  cartSelector,
-  (cart) => cart.cartItems
-);
+export const useCartItemsSelector = () => {
+  const selector = useMemo(() => cartItemsSelector, []);
+
+  return useSelector(selector);
+}
 
 // total cart items quantity
-export const cartItemCountSelector = createSelector(
-  cartItemSelector,
-  (cartItem) => 
-    cartItem.reduce(
-      ((accumulatedQty, item) => accumulatedQty + item.quantity),
-      0
+export const useCartItemsCountSelector = () => {
+  const selector = useMemo(() => (
+    createSelector(
+      cartItemsSelector,
+      (cartItem) => cartItem.reduce((accumulatedQty, item) => accumulatedQty + item.quantity, 0)
     )
-);
+  ), []);
+
+  return useSelector(selector);
+}
 
 // total cart items price
-export const cartItemPriceSelector = createSelector(
-  cartItemSelector,
-  (cartItem) =>
-    cartItem.reduce(
-      ((accumulatedPrice, item) => accumulatedPrice + (item.quantity * item.price)),
-      0
+export const useCartItemsPriceSelector = () => {
+  const selector = useMemo(() => (
+    createSelector(
+      cartItemsSelector,
+      (cartItem) => cartItem.reduce((accumulatedPrice, item) => accumulatedPrice + (item.quantity * item.price), 0)
     )
-);
+  ), []);
+
+  return useSelector(selector);
+}
